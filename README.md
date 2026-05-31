@@ -1,7 +1,18 @@
 # Simple c-like programming language
+
 ## Building
-`mkdir build; cd build; cmake ..; make; cd ..`
-## running
-`./build/basic [file]`
-## testing
-`./build/unit_tests`
+```bash
+mkdir build
+cd build
+cmake ..
+make
+cd ..
+```
+## Running
+```bash
+./build/basic [file]
+```
+## Testing
+```bash
+./build/unit_tests
+```
