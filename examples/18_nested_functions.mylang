@@ -1,0 +1,9 @@
+func outer(x) {
+  func inner(y) {
+    return add(y, 1);
+  }
+
+  return inner(x);
+}
+
+print(outer(10));

@@ -1,0 +1,10 @@
+n = 5;
+i = 1;
+result = 1;
+
+while (sub(i, add(n, 1))) {
+  result = mul(result, i);
+  i = add(i, 1);
+}
+
+print(result);

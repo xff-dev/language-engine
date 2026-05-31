@@ -1,0 +1,9 @@
+x = "global";
+
+func show(x) {
+  print("inside:", x);
+}
+
+print("outside:", x);
+show("local");
+print("outside again:", x);

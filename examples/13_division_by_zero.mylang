@@ -1,0 +1,12 @@
+a = 10;
+b = 2;
+
+if (not(eq(b, 0))) {
+  print(div(a, b));
+}
+
+b = 0;
+
+if (eq(b, 0)) {
+  print("cannot divide by zero");
+}

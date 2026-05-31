@@ -1,0 +1,11 @@
+secret = 7;
+
+guess = 3;
+if (eq(guess, secret)) {
+  print("first guess is correct");
+}
+
+guess = 7;
+if (eq(guess, secret)) {
+  print("second guess is correct");
+}

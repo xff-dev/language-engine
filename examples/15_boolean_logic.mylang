@@ -1,0 +1,12 @@
+func isTrue(x) {
+  return not(not(x));
+}
+
+func isFalse(x) {
+  return not(x);
+}
+
+print(isTrue(1));
+print(isTrue(0));
+print(isFalse(0));
+print(isFalse("hello"));

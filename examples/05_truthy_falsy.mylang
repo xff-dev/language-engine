@@ -1,0 +1,14 @@
+if (0) {
+  print("0 is true");
+}
+
+if ("") {
+  print("empty string is true");
+}
+
+if ("text") {
+  print("text is true");
+}
+
+print(not(0));
+print(not("text"));

@@ -1,0 +1,9 @@
+i = 1;
+sum = 0;
+
+while (sub(i, 6)) {
+  sum = add(sum, i);
+  i = add(i, 1);
+}
+
+print(sum);

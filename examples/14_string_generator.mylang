@@ -1,0 +1,9 @@
+str = "numbers:";
+i = 0;
+
+while (sub(i, 5)) {
+  str = add(str, add(" ", i));
+  i = add(i, 1);
+}
+
+print(str);

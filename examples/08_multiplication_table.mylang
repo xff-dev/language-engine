@@ -1,0 +1,15 @@
+i = 1;
+
+while (sub(i, 4)) {
+  j = 1;
+  row = "";
+
+  while (sub(j, 4)) {
+    value = mul(i, j);
+    row = add(row, add(value, " "));
+    j = add(j, 1);
+  }
+
+  print(row);
+  i = add(i, 1);
+}

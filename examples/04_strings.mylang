@@ -1,0 +1,5 @@
+name = "Alex";
+message = add("Hello, ", name);
+
+print(message);
+print("line one\nline two");

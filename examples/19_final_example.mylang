@@ -1,0 +1,21 @@
+func factorial(n) {
+  if (eq(n, 0)) {
+    return 1;
+  }
+
+  return mul(n, factorial(sub(n, 1)));
+}
+
+i = 1;
+result = "";
+
+while (sub(i, 6)) {
+  value = factorial(i);
+  line = add("factorial ", add(i, add(" = ", value)));
+  print(line);
+
+  result = add(result, add(value, " "));
+  i = add(i, 1);
+}
+
+print("all results:", result);

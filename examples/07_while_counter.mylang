@@ -1,0 +1,6 @@
+i = 0;
+
+while (sub(i, 5)) {
+  print(i);
+  i = add(i, 1);
+}
