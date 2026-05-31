@@ -16,3 +16,6 @@ cd ..
 ```bash
 ./build/unit_tests
 ```
+
+## Docs
+- [AI usage](AI.md)
