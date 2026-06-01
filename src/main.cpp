@@ -46,6 +46,11 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  if (!ctx.errors.empty()) {
+    printErrors(ctx);
+    return 1;
+  }
+
   Parser parser(lexerResult, ctx);
   std::shared_ptr<ASTNode> parserResult;
   try {
@@ -54,7 +59,7 @@ int main(int argc, char *argv[]) {
   } catch (std::runtime_error e) {
     std::cout << e.what() << std::endl;
     printErrors(ctx);
-    return 0;
+    return 1;
   }
 
   if (!quiet) {
@@ -77,7 +82,10 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  printErrors(ctx);
+  if (!ctx.errors.empty()) {
+    printErrors(ctx);
+    return 1;
+  }
 
   VMContext vmctx{.ctx = ctx};
   VirtualMachine vm = VirtualMachine(IR, vmctx);
