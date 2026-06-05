@@ -8,6 +8,12 @@
 enum class CompilerErrorType {
   UnexpectedToken,
   UnterminatedString,
+  UndefinedVariable,
+  UndefinedFunction,
+  FunctionArgumentMismatch,
+  NotCallable,
+  Redeclaration,
+  ReturnOutsideFunction
 };
 
 struct CompilerError {

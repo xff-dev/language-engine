@@ -132,48 +132,50 @@ void printAST(const std::shared_ptr<ASTNode> &node, int depth) {
     return;
 
   std::string indent(depth * 2, ' ');
+  auto location =
+      std::format("[{}:{}] ", node->location.line, node->location.column);
 
   if (auto n = std::dynamic_pointer_cast<NumberNode>(node)) {
-    std::cout << indent << "NumberNode: " << n->value << "\n";
+    std::cout << indent << location << "NumberNode: " << n->value << "\n";
   } else if (auto n = std::dynamic_pointer_cast<StringNode>(node)) {
-    std::cout << indent << "StringNode: " << n->value << "\n";
+    std::cout << indent << location << "StringNode: " << n->value << "\n";
   } else if (auto n = std::dynamic_pointer_cast<VariableNode>(node)) {
-    std::cout << indent << "VariableNode: " << n->value << "\n";
+    std::cout << indent << location << "VariableNode: " << n->value << "\n";
   } else if (auto n = std::dynamic_pointer_cast<EqualNode>(node)) {
-    std::cout << indent << "EqualNode: " << n->variable << " =\n";
+    std::cout << indent << location << "EqualNode: " << n->variable << " =\n";
     printAST(n->value, depth + 1);
 
   } else if (auto n = std::dynamic_pointer_cast<CallNode>(node)) {
-    std::cout << indent << "CallNode: " << n->call << "\n";
+    std::cout << indent << location << "CallNode: " << n->call << "\n";
     for (const auto &arg : n->args) {
       printAST(arg, depth + 1);
     }
   } else if (auto n = std::dynamic_pointer_cast<BlockNode>(node)) {
-    std::cout << indent << "BlockNode:\n";
+    std::cout << indent << location << "BlockNode:\n";
     for (const auto &stmt : n->statements) {
       printAST(stmt, depth + 1);
     }
   } else if (auto n = std::dynamic_pointer_cast<IfNode>(node)) {
-    std::cout << indent << "IfNode:\n";
+    std::cout << indent << location << "IfNode:\n";
     std::cout << indent << "  Condition:\n";
     printAST(n->condition, depth + 2);
     std::cout << indent << "  Body:\n";
     printAST(n->body, depth + 2);
   } else if (auto n = std::dynamic_pointer_cast<WhileNode>(node)) {
-    std::cout << indent << "WhileNode:\n";
+    std::cout << indent << location << "WhileNode:\n";
     std::cout << indent << "  Condition:\n";
     printAST(n->condition, depth + 2);
     std::cout << indent << "  Body:\n";
     printAST(n->body, depth + 2);
   } else if (auto n = std::dynamic_pointer_cast<FunctionNode>(node)) {
-    std::cout << indent << "FunctionNode: " << n->name << " (";
+    std::cout << indent << location << "FunctionNode: " << n->name << " (";
     for (size_t i = 0; i < n->params.size(); ++i) {
       std::cout << n->params[i] << (i + 1 < n->params.size() ? ", " : "");
     }
     std::cout << ")\n";
     printAST(n->body, depth + 1);
   } else if (auto n = std::dynamic_pointer_cast<ReturnNode>(node)) {
-    std::cout << indent << "ReturnNode:\n";
+    std::cout << indent << location << "ReturnNode:\n";
     if (n->value) {
       printAST(n->value, depth + 1);
     } else {
@@ -205,7 +207,7 @@ void printErrors(CompilerContext &ctx) {
     if (errorLineIdx >= 0 && errorLineIdx < static_cast<int>(lines.size())) {
       std::cout << "    " << lines[errorLineIdx] << "\n";
       std::cout << "    ";
-      for (int i = 0; i < error.start.column; ++i) {
+      for (int i = 1; i < error.start.column; ++i) {
         std::cout << " ";
       }
       std::cout << "^\n";

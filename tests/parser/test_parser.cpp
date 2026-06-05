@@ -432,3 +432,7 @@ TEST_CASE("assignment with multiple arguments to function",
   auto arg2 = assert_node_type<VariableNode>(callValue->args[2]);
   CHECK(arg2->value == "var");
 }
+
+// test node->sourceLocation is correct
+
+

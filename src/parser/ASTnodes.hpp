@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 struct ASTNode {
+  SourceLocation location;
   virtual ~ASTNode() = default;
 };
 
