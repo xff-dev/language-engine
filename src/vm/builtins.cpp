@@ -15,6 +15,20 @@ namespace builtins {
 using BuiltinFn = std::function<std::string(const std::vector<std::string> &,
                                             VMContext &vmctx)>;
 
+bool checkArgLen(std::string name, int argn) {
+  if (name == "print") {
+    return true;
+  }
+  if (name == "add" || name == "sub" || name == "mul" || name == "div" ||
+      name == "eq") {
+    return argn == 2;
+  }
+  if (name == "not") {
+    return argn == 1;
+  }
+  return false;
+}
+
 std::optional<int> tryParseInt(const std::string &s) {
   try {
     size_t pos = 0;

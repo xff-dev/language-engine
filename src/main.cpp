@@ -1,3 +1,4 @@
+#include "analyzer/analyzer.hpp"
 #include "common/context.hpp"
 #include "common/diagnostics.hpp"
 #include "lexer/lexer.hpp"
@@ -64,6 +65,15 @@ int main(int argc, char *argv[]) {
 
   if (!quiet) {
     printAST(parserResult);
+  }
+
+  Analyzer analyzer(ctx);
+
+  analyzer.analyze(parserResult);
+
+  if (!ctx.errors.empty()) {
+    printErrors(ctx);
+    return 1;
   }
 
   IRGenerator generator(parserResult, ctx);

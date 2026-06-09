@@ -30,7 +30,7 @@ const char Lexer::current() {
 
 void Lexer::advance() {
   if (current() == '\n') {
-    column = 0;
+    column = 1;
     line++;
   } else {
     column++;
