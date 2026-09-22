@@ -1,3 +1,4 @@
+#include <format>
 #include <fstream>
 #include <iostream>
 #include <optional>
@@ -31,7 +32,8 @@ int App::run() {
 }
 
 int App::printHelp() {
-  std::cout << AppConstants::Help << std::endl;
+  std::cout << std::format(AppConstants::Help, options.programName)
+            << std::endl;
   return 0;
 }
 

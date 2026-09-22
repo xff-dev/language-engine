@@ -18,6 +18,8 @@ struct CliOptions {
 
   std::vector<std::string> programArgs;
 
+  std::string programName;
+
   int optimization = 0;
 };
 
